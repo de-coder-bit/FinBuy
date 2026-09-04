@@ -2,7 +2,7 @@
 
 FinBuy is a full-stack e-commerce demo where users can buy gadgets (smartphones, laptops) on 0% EMI, backed digitally by their mutual fund portfolio instead of a credit card or cash payment.
 
-**Live Demo:** [add your Vercel URL here]
+**Live Demo:** (https://fin-buy-git-main-deepakverma4336-9399s-projects.vercel.app/)
 **Video Walkthrough:** [add your demo video link here]
 
 ---
