@@ -6,20 +6,64 @@ function calculateEMI(principal, annualRate, tenureMonths) {
     return Math.round(principal / tenureMonths);
   }
   const monthlyRate = annualRate / 12 / 100;
-  const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths)) / (Math.pow(1 + monthlyRate, tenureMonths) - 1);
+  const emi =
+    (principal * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths)) /
+    (Math.pow(1 + monthlyRate, tenureMonths) - 1);
   return Math.round(emi);
 }
 
 function generateEMIPlans(price) {
   // Plan tenures and standard configurations matching 1Fi product specifications
   const plans = [
-    { tenure: 3, rate: 0.0, cashback: Math.round(price * 0.058), isZeroCost: true, isPopular: false },
-    { tenure: 6, rate: 0.0, cashback: Math.round(price * 0.058), isZeroCost: true, isPopular: true },
-    { tenure: 12, rate: 0.0, cashback: Math.round(price * 0.058), isZeroCost: true, isPopular: false },
-    { tenure: 24, rate: 0.0, cashback: Math.round(price * 0.058), isZeroCost: true, isPopular: false },
-    { tenure: 36, rate: 10.5, cashback: Math.round(price * 0.058), isZeroCost: false, isPopular: false },
-    { tenure: 48, rate: 10.5, cashback: Math.round(price * 0.058), isZeroCost: false, isPopular: false },
-    { tenure: 60, rate: 10.5, cashback: Math.round(price * 0.058), isZeroCost: false, isPopular: false },
+    {
+      tenure: 3,
+      rate: 0.0,
+      cashback: Math.round(price * 0.058),
+      isZeroCost: true,
+      isPopular: false,
+    },
+    {
+      tenure: 6,
+      rate: 0.0,
+      cashback: Math.round(price * 0.058),
+      isZeroCost: true,
+      isPopular: true,
+    },
+    {
+      tenure: 12,
+      rate: 0.0,
+      cashback: Math.round(price * 0.058),
+      isZeroCost: true,
+      isPopular: false,
+    },
+    {
+      tenure: 24,
+      rate: 0.0,
+      cashback: Math.round(price * 0.058),
+      isZeroCost: true,
+      isPopular: false,
+    },
+    {
+      tenure: 36,
+      rate: 10.5,
+      cashback: Math.round(price * 0.058),
+      isZeroCost: false,
+      isPopular: false,
+    },
+    {
+      tenure: 48,
+      rate: 10.5,
+      cashback: Math.round(price * 0.058),
+      isZeroCost: false,
+      isPopular: false,
+    },
+    {
+      tenure: 60,
+      rate: 10.5,
+      cashback: Math.round(price * 0.058),
+      isZeroCost: false,
+      isPopular: false,
+    },
   ];
 
   return plans.map((p) => {
@@ -39,7 +83,8 @@ function generateEMIPlans(price) {
     }
 
     const totalPayable = monthlyAmount * p.tenure;
-    const cashback = price === 127400 ? 7500 : Math.round((price * 0.06) / 100) * 100;
+    const cashback =
+      price === 127400 ? 7500 : Math.round((price * 0.06) / 100) * 100;
 
     return {
       tenureMonths: p.tenure,
@@ -77,7 +122,7 @@ async function main() {
       isNew: true,
       rating: 4.9,
       reviewCount: 2840,
-      featuredImage: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80",
+      featuredImage: "/images/iphone-orange.jpg",
       highlights: JSON.stringify([
         "A19 Pro Chip with 6-core GPU & Hardware Ray Tracing",
         "48MP Fusion Camera system with 5x Optical Telephoto",
@@ -88,84 +133,71 @@ async function main() {
       variants: {
         create: [
           {
-            name: "256GB - Desert Titanium",
-            colorName: "Desert Titanium",
-            colorHex: "#d4a373",
+            name: "256GB - Cosmic Orange",
+            colorName: "Cosmic Orange",
+            colorHex: "#C1652B",
             storage: "256GB",
             price: 127400,
             mrp: 134900,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80",
-              "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1000&q=80",
-              "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1000&q=80",
-            ]),
+            imageUrl: "/images/iphone-orange.jpg",
+            galleryImages: JSON.stringify(["/images/iphone-orange.jpg"]),
             emiPlans: {
               create: generateEMIPlans(127400),
             },
           },
           {
-            name: "256GB - Natural Titanium",
-            colorName: "Natural Titanium",
-            colorHex: "#8E8D8A",
+            name: "256GB - Deep Blue",
+            colorName: "Deep Blue",
+            colorHex: "#1B2A41",
             storage: "256GB",
             price: 127400,
             mrp: 134900,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1000&q=80",
-              "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80",
-            ]),
+            imageUrl: "/images/iphone-blue.jpg",
+            galleryImages: JSON.stringify(["/images/iphone-blue.jpg"]),
             emiPlans: {
               create: generateEMIPlans(127400),
             },
           },
           {
-            name: "256GB - Black Titanium",
-            colorName: "Black Titanium",
-            colorHex: "#2D2D2D",
+            name: "256GB - Silver",
+            colorName: "Silver",
+            colorHex: "#C7C8CA",
             storage: "256GB",
             price: 127400,
             mrp: 134900,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1000&q=80",
-            ]),
+            imageUrl: "/images/iphone-silver.jpg",
+            galleryImages: JSON.stringify(["/images/iphone-silver.jpg"]),
             emiPlans: {
               create: generateEMIPlans(127400),
             },
           },
           {
-            name: "512GB - Desert Titanium",
-            colorName: "Desert Titanium",
-            colorHex: "#d4a373",
+            name: "512GB - Cosmic Orange",
+            colorName: "Cosmic Orange",
+            colorHex: "#C1652B",
             storage: "512GB",
             price: 147400,
             mrp: 154900,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80",
-            ]),
+            imageUrl: "/images/iphone-orange.jpg",
+            galleryImages: JSON.stringify(["/images/iphone-orange.jpg"]),
             emiPlans: {
               create: generateEMIPlans(147400),
             },
           },
           {
-            name: "1TB - Natural Titanium",
-            colorName: "Natural Titanium",
-            colorHex: "#8E8D8A",
+            name: "1TB - Deep Blue",
+            colorName: "Deep Blue",
+            colorHex: "#1B2A41",
             storage: "1TB",
             price: 167400,
             mrp: 174900,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1000&q=80",
-            ]),
+            imageUrl: "/images/iphone-blue.jpg",
+            galleryImages: JSON.stringify(["/images/iphone-blue.jpg"]),
             emiPlans: {
               create: generateEMIPlans(167400),
             },
@@ -188,11 +220,11 @@ async function main() {
       isNew: true,
       rating: 4.8,
       reviewCount: 1950,
-      featuredImage: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1000&q=80",
+      featuredImage: "/images/samsung-titanium-gray.jpg",
       highlights: JSON.stringify([
         "Galaxy AI features: Circle to Search, Live Translate, Note Assist",
         "200MP Main Camera + 50MP 5x Optical Zoom",
-        "6.8\" Dynamic AMOLED 2X with 2600 nits peak brightness",
+        '6.8" Dynamic AMOLED 2X with 2600 nits peak brightness',
         "Snapdragon 8 Gen 3 with 1.9x larger vapor chamber",
         "Built-in ultra-low latency S Pen stylus",
       ]),
@@ -206,9 +238,9 @@ async function main() {
             price: 129999,
             mrp: 139999,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1000&q=80",
+            imageUrl: "/images/samsung-titanium-gray.jpg",
             galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1000&q=80",
+              "/images/samsung-titanium-gray.jpg",
             ]),
             emiPlans: {
               create: generateEMIPlans(129999),
@@ -222,28 +254,10 @@ async function main() {
             price: 129999,
             mrp: 139999,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=1000&q=80",
-            ]),
+            imageUrl: "/images/samsung-violet.jpg",
+            galleryImages: JSON.stringify(["/images/samsung-violet.jpg"]),
             emiPlans: {
               create: generateEMIPlans(129999),
-            },
-          },
-          {
-            name: "512GB - Titanium Black",
-            colorName: "Titanium Black",
-            colorHex: "#2B2B2B",
-            storage: "512GB",
-            price: 139999,
-            mrp: 149999,
-            inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1000&q=80",
-            ]),
-            emiPlans: {
-              create: generateEMIPlans(139999),
             },
           },
         ],
@@ -264,7 +278,7 @@ async function main() {
       isNew: true,
       rating: 4.7,
       reviewCount: 1120,
-      featuredImage: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1000&q=80",
+      featuredImage: "/images/pixel-obsidian.jpg",
       highlights: JSON.stringify([
         "Google Tensor G4 processor with Titan M2 security coprocessor",
         "Gemini AI Built-in: Pixel Studio, Reimagine, Add Me photo tech",
@@ -282,26 +296,8 @@ async function main() {
             price: 109999,
             mrp: 119999,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1000&q=80",
-            ]),
-            emiPlans: {
-              create: generateEMIPlans(109999),
-            },
-          },
-          {
-            name: "128GB - Porcelain",
-            colorName: "Porcelain",
-            colorHex: "#EDE8DF",
-            storage: "128GB",
-            price: 109999,
-            mrp: 119999,
-            inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1000&q=80",
-            ]),
+            imageUrl: "/images/pixel-obsidian.jpg",
+            galleryImages: JSON.stringify(["/images/pixel-obsidian.jpg"]),
             emiPlans: {
               create: generateEMIPlans(109999),
             },
@@ -314,10 +310,8 @@ async function main() {
             price: 119999,
             mrp: 129999,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1000&q=80",
-            ]),
+            imageUrl: "/images/pixel-hazel.jpg",
+            galleryImages: JSON.stringify(["/images/pixel-hazel.jpg"]),
             emiPlans: {
               create: generateEMIPlans(119999),
             },
@@ -340,7 +334,7 @@ async function main() {
       isNew: true,
       rating: 4.9,
       reviewCount: 840,
-      featuredImage: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=80",
+      featuredImage: "/images/macbook-front.jpg",
       highlights: JSON.stringify([
         "Apple M4 chip with 10-core CPU and 10-core GPU",
         "14.2-inch Liquid Retina XDR display with 1600 nits peak HDR",
@@ -358,25 +352,10 @@ async function main() {
             price: 169900,
             mrp: 179900,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=80",
+            imageUrl: "/images/macbook-front.jpg",
             galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=80",
-            ]),
-            emiPlans: {
-              create: generateEMIPlans(169900),
-            },
-          },
-          {
-            name: "512GB - Silver",
-            colorName: "Silver",
-            colorHex: "#E2E4E5",
-            storage: "512GB",
-            price: 169900,
-            mrp: 179900,
-            inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=80",
-            galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=80",
+              "/images/macbook-front.jpg",
+              "/images/macbook-keyboard.jpg",
             ]),
             emiPlans: {
               create: generateEMIPlans(169900),
@@ -390,9 +369,10 @@ async function main() {
             price: 189900,
             mrp: 199900,
             inStock: true,
-            imageUrl: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=80",
+            imageUrl: "/images/macbook-front.jpg",
             galleryImages: JSON.stringify([
-              "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=80",
+              "/images/macbook-front.jpg",
+              "/images/macbook-keyboard.jpg",
             ]),
             emiPlans: {
               create: generateEMIPlans(189900),
